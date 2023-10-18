@@ -1,54 +1,63 @@
-# NLP Web Tool User Guide
+NLP Web Tool API Documentation
 
-## Table of Contents
+Introduction
 
-- [Introduction](#introduction)
-- [Requirements](#requirements)
-- [Getting Started](#getting-started)
-- [How to Use](#how-to-use)
-- [Troubleshooting](#troubleshooting)
-- [FAQs](#faqs)
-- [Contact Support](#contact-support)
+This API is designed to analyze the sentiment of a given URL using MeaningCloud's Sentiment Analysis API.
 
-## Introduction
+Getting Started
 
-Welcome to the NLP Web Tool User Guide. This guide will walk you through the features of the NLP Web Tool and how to use them effectively.
+Clone the repository.
+Run npm install to install dependencies.
+Start the server with npm start.
+API Endpoints
 
-## Requirements
+POST /analyze
+Analyzes the sentiment of a given URL.
 
-- A modern web browser (Chrome, Firefox, Safari, etc.)
-- Internet connection
+API Endpoints
 
-## Getting Started
+POST /analyze
+Analyzes the sentiment of a given URL.
 
-1. Open your web browser and navigate to the NLP Web Tool website.
-2. You will see a simple interface with an input field for a URL.
+Parameters
 
-## How to Use
+url (required): The URL to analyze.
+Response
 
-### Analyzing a URL
+JSON object containing the sentiment analysis.
 
-1. **Enter the URL**: In the input field, enter the URL you want to analyze.
-2. **Submit**: Click the "Analyze" button.
-3. **View Results**: The analysis will be displayed below the input field. You will see various metrics like polarity, subjectivity, and a text snippet.
+Example
 
-## Troubleshooting
+Request: 
+curl -X POST http://localhost:3000/analyze -d "url=http://example.com"
 
-### Error Messages
+Response:
 
-- **Invalid URL**: Make sure the URL you entered is valid and accessible.
-- **Analysis Failed**: This could be due to server issues or an unsupported URL.
+{
+  "polarity": "neutral",
+  "subjectivity": "subjective",
+  "text": "This is an example."
+}
 
-### General Troubleshooting Steps
+Error Codes
 
-- Refresh the page.
-- Clear your browser's cache and cookies.
-- Try a different web browser.
+500: Internal Server Error
+Rate Limiting
 
-## FAQs
+Limited to 100 requests per 15 minutes.
 
-**Q**: What types of URLs can I analyze?  
-**A**: You can analyze any publicly accessible URL.
+Security
 
-**Q**: Is my data stored?  
-**A**: No, the NLP Web Tool does not store any of your data.
+This API uses Helmet.js for basic security configurations.
+
+Caching
+
+Results are cached for repeated URLs to improve performance.
+
+Contributing
+
+Please read CONTRIBUTING.md for details on contributing to this project.
+
+License
+
+This project is licensed under the MIT License.
